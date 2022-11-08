@@ -1,0 +1,1081 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,
+center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+  display: block;
+}
+body {
+  line-height: 1;
+  
+}
+ol,ul {
+  list-style: none;
+}
+a:link {
+  text-decoration: none;
+}
+blockquote,q {
+  quotes: none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+button {
+    font-family: "微軟正黑體";
+}
+//共用
+html {
+    min-width: 1080px;
+    height: 100%;
+    font-family: "微軟正黑體";
+    box-sizing: border-box;
+    background-color: #eeeeee;
+}
+//header
+header {
+    width: 100%;
+    height: 55px;
+    background: #c88d4b;
+    z-index: 100;
+    box-shadow: 0px 0px 10px gray;
+    position: fixed;
+    //包覆
+    article {
+        max-width: 960px;
+        height: 55px;
+        margin: 0px auto;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 195px;
+            height: 110px;
+            background: #c88d4b;
+            border-radius: 50%;
+            z-index: -1;
+            left: 0px;
+        }
+        //logo
+        .logo {
+            width: 168px;
+            height: 95px;
+            background: url('../images/logo.png') no-repeat bottom center;
+            margin-left: 20px;
+            float: left;
+        }
+        //上選單
+        ul {
+            float: left;
+            margin-left: 40px;
+            li {
+                float: left;
+                height: 55px;
+                overflow: hidden;
+                transition: 0.3s all;
+                &:hover {
+                    background: #006f37;
+                }
+                &:last-child {
+                    margin-left: 20px;
+                }
+                &:last-child:before {
+                    content: "";
+                    position: absolute;
+                    width: 22px;
+                    height: 22px;
+                    background: url('../images/fb.png');
+                    top: 17px;
+                    margin-left: 5px;
+                }
+                &:last-child:hover {
+                    background: rgb(0, 60, 82);
+                }
+                a {
+                    line-height: 55px;
+                    padding: 17px 15px;
+                    color: white;
+                }
+                .fb {
+                    padding: 17px 5px 17px 30px;
+                }
+            }
+        }
+        //上選單動畫
+        .visited1 li:nth-child(1),.visited2 li:nth-child(2),.visited3 li:nth-child(3),.visited4 li:nth-child(4),.visited5 li:nth-child(5) {
+            background: #006f37;
+        }
+        //rwd按鈕
+        .rwdbut {
+            display: none;
+            width: 110px;
+            height: 100px;
+            outline: none;
+            border: none;
+            position: absolute;
+            top: 25px;
+            left: 0%;
+            background: transparent;
+            overflow: hidden;
+            z-index: 2;
+            .butimg {
+                width: 100px;
+                height: 200px;
+                background: url('../images/rwdbut.png');
+                position: absolute;
+                top: 0px;
+            }
+        }
+        //rwd按鈕動畫
+        .rwdslide .butimg {
+            top: -100px;
+        }
+        //rwdfb
+        .rwdfb {
+            display: none;
+            width: 97px;
+            height: 96px;
+            background: url('../images/fbbig.png');
+            position: absolute;
+            top: 25px;
+            right: 0px;
+            z-index: 2;
+            &:active {
+                transform: scale(1.1);
+            }
+        }
+        //rwd選單
+        .rwdlist {
+            display: none;
+            width: 960px;
+            height: 0px;
+            margin-top: 160px;
+            position: absolute;
+            overflow: hidden;
+            transition: 0.5s all;
+            z-index: 2;
+            li {
+                list-style: none;
+                border-style: solid;
+                border-color: white;
+                border-width: 5px 5px 0px 5px;
+                overflow: hidden;
+                &:last-child {
+                    border-bottom-width: 5px;
+                }
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 150px;
+                    color: white;
+                    font-size: 52px;
+                    line-height: 150px;
+                    padding-left: 50px;
+                    background: rgba(138,97,52,0.8);
+                    &:active {
+                        background: rgba(20,96,45,0.8);
+                    }
+                }
+            }
+        }
+    }
+    //rwd選單動畫
+    .rwdslide .rwdlist {
+        height: 800px;
+    }
+}
+//main
+main {
+    position: relative;
+    width: 100%;
+    height: auto;
+    //圖片輪播
+    .single-item {
+        margin-bottom: 0px!important;
+        a {
+            outline: none;
+            //置圖區
+            .img1 {
+                position: relative;
+                width: 100%;
+                height: 985px;
+                background: url('../images/banner.png') no-repeat top center;
+            }
+            //內嵌字體
+            h1 {
+                font-family: Arial, Helvetica, sans-serif;
+                position: absolute;
+                font-size: 75px;
+                top: 120px;
+                left: 50%;
+                transform: translateX(-50%);
+                letter-spacing: 10px;
+                z-index: 1;
+                color: white;
+                text-shadow: 0px 0px 10px gray;
+            }
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                position: absolute;
+                font-size: 26px;
+                top: 200px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+                color: white;
+            }
+        }
+        //點點
+        .slick-dots {
+            width: 50px;
+            right: 0px;
+            top: 43%;
+        }
+        .slick-dots li button:before {
+            width: 21px;
+            color: #005b2a;
+            opacity: 1;
+        }
+        .slick-dots li.slick-active button:before {
+            background: url('../images/banneric.png');
+            color: transparent;
+            background-size: cover;;
+            width: 22px;
+        }
+    }
+    //小選單
+    .list {
+        width: 100%;
+        height: 500px;
+        background: #eeeeee;
+        position: relative;
+        //包覆
+        article {
+            max-width: 1100px;
+            height: 400px;
+            margin: 0px auto;
+            section {
+                width: 320px;
+                height: 240px;
+                float: left;
+                margin: 80px 70px 40px 0px;
+                opacity: 0;
+                box-shadow: 0px 0px 10px gray;
+                position: relative;
+                z-index: 2;
+                div {
+                    width: 180px;
+                    height: 80px;
+                    background: white;
+                    margin: -40px auto 0px;
+                    text-align: center;
+                    opacity: 0;
+                    p {
+                        text-decoration: underline;
+                        font-size: 12px;
+                        color: #59493f;
+                        line-height: 40px;
+                    }
+                    h2 {
+                        font-size: 23px;
+                        color: #59493f;
+                    }
+                }
+            }
+            section:nth-child(1) {
+                background: url('../images/img_1.png') no-repeat;
+                background-size: cover;
+            }
+            section:nth-child(2) {
+                background: url('../images/img_2.png') no-repeat;
+                background-size: cover;
+                animation-duration: 1.5s;
+            }
+            section:nth-child(3) {
+                background: url('../images/img_3.png') no-repeat;
+                background-size: cover;
+                margin-right: 0px;
+                animation-duration: 1.6s;
+            }
+            //rwd
+            .rwdsec1,.rwdsec2,.rwdsec3 {
+                display: none;
+                opacity: 0;
+                float: none;
+                margin: 250px auto;
+                width: 90%;
+                height: 700px;
+            }
+            .rwdsec1 {
+                background: url('../images/img_1.png') no-repeat;
+                background-size: cover;
+            }
+            .rwdsec2 {
+                background: url('../images/img_2.png') no-repeat;
+                background-size: cover;
+            }
+            .rwdsec3 {
+                background: url('../images/img_3.png') no-repeat;
+                background-size: cover;
+            }
+            //菜單按鈕
+            button {
+                display: block;
+                width: 250px;
+                height: 50px;
+                font-size: 20px;
+                color: white;
+                background: #ee5206;
+                outline: none;
+                border: none;
+                margin: 0px auto;
+                cursor: pointer;
+                opacity: 0;
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+            //小選單動畫
+            .slide1 {
+                opacity: 1;
+                animation: slide1 0.8s ease-out;
+            }
+            .slide2 {
+                opacity: 1;
+                animation: slide2 1.5s ease-out;
+            }
+            .slide3 {
+                opacity: 1;
+                animation: slide3 1.8s ease-out;
+            }
+            //rwd按鈕
+            .listrwdbut {
+                display: none;
+                width: 65%;
+                height: 160px;
+                color: white;
+                background: #ee5206;
+                margin: 0px auto;
+                text-align: center;
+                line-height: 160px;
+                opacity: 0;
+                &:active {
+                    transform: scale(1.1);
+                }
+                p {
+                    font-size: 80px;
+                    letter-spacing: 5px;
+                }
+            }
+        }
+        //背景汙點
+        .listbg1 {
+            width: 190px;
+            height: 230px;
+            background: url('../images/float_1.png');
+            background-size: cover;
+            position: absolute;
+            top: 25px;
+            right: 80px;
+        }
+        .listbg2 {
+            width: 191px;
+            height: 202px;
+            background: url('../images/float_2.png');
+            background-size: cover;
+            position: absolute;
+            bottom: 25px;
+            left: 120px;
+        }
+
+    }
+    //關於我們
+    .about {
+        width: 100%;
+        height: 800px;
+        background: url('../images/aboutbg.png') no-repeat top center;
+        .text {
+            width: 430px;
+            height: 450px;
+            background: linear-gradient(to bottom,rgba(0,0,0,0.5),transparent);
+            margin: 0px auto;
+            transform: translateY(40%);
+            &::before {
+                content: "";
+                position: absolute;
+                width: 50px;
+                height: 1px;
+                border-top: #c18b4f;
+                border-style: solid;
+                border-width: 5px 0px 0px 0px;
+                margin: 30px 0px 0px 30px;
+            }
+            h2 {
+                display: inline-block;
+                color: white;
+                font-size: 32px;
+                font-weight: bold;
+                opacity: 0;
+                &:first-child {
+                    padding: 55px 0px 0px 26px;
+                }
+            }
+            h3 {
+                color: white;
+                font-size: 20px;
+                font-weight: bold;
+                padding: 5px 0px 0px 27px;
+                opacity: 0;
+            }
+            p {
+                color: white;
+                font-weight: bold;
+                padding: 20px 27px 0px;
+                line-height: 24px;
+                opacity: 0;
+            }
+            //rwd
+            .rat1,.rat2,.rat3,.rat4,.rat5,.ra1,.ra2,.ra3 {
+                display: none;
+            }
+        }
+    }
+    //菜單
+    .menu {
+        width: 100%;
+        height: 0;
+        background: url('../images/menu.png') no-repeat top center;
+        padding-top: 51%;
+        background-size: cover;
+        opacity: 0;
+    }
+    .rwdmenu {
+        display: none;
+        width: 100%;
+        height: 10100px;
+        background: url('../images/rwdmenu.png');
+    }
+    //外送區
+    .delivery {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        //左邊吳柏毅
+        .uber {
+            width: 50%;
+            height: 600px;
+            background: linear-gradient(to right,#076234,#008542);
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#076234, endColorstr=#008542);
+            float: left;
+            position: relative;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 0px;
+                height: 0px;
+                border-width: 200px 950px 0px 0px;
+                border-style: solid;
+                border-color: transparent #676767 transparent transparent;
+                right: 0px;
+                bottom: 0px;
+            }
+            h2 {
+                color: white;
+                font-size: 54px;
+                position: absolute;
+                top: 100px;
+                right: 530px;
+            }
+            h3 {
+                color: white;
+                font-size: 48px;
+                position: absolute;
+                top: 180px;
+                right: 660px;
+
+            }
+            .uberbut {
+                width: 220px;
+                height: 50px;
+                background: #faf286;
+                outline: none;
+                border: none;
+                border-radius: 30px;
+                position: absolute;
+                top: 280px;
+                right: 530px;
+                cursor: pointer;
+                font-size: 20px;
+                letter-spacing: 3px;
+                overflow: hidden;
+                .light {
+                    width: 80px;
+                    height: 120px;
+                    background: linear-gradient(to right,transparent,rgba(255,255,255,.5),transparent);
+                    position: absolute;
+                    top: -40px;
+                    left: -90px;
+                    transform: rotate(30deg);
+                    transition: 0.3s all;
+                }
+            }
+            //閃光動畫
+            .flash .light {
+                left: 250px;
+            }
+            .uberbg {
+                width: 410px;
+                height: 450px;
+                background: url('../images/img_4.png') no-repeat;
+                position: absolute;
+                right: 65px;
+                bottom: 45px;
+                opacity: 0;
+                transition: 0.1s all;
+                transition-delay: 0.5s;
+            }
+        }
+        //車子動畫
+        .run .uberbg {
+            opacity: 1;
+            animation: delivery1 0.8s ease-out;
+        }
+        .run2 .uberbg {
+            opacity: 0;
+            animation: delivery1_2 1s ease-out;
+        }
+        //右邊熊貓
+        .foodpanda {
+            width: 50%;
+            height: 600px;
+            background: linear-gradient(to right,#ea621f,#d55313);
+            float: left;
+            position: relative;
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ea621f, endColorstr=#d55313);
+            &::before {
+                content: "";
+                position: absolute;
+                width: 0px;
+                height: 0px;
+                left: 0px;
+                bottom: 0px;
+                border-width: 200px 0px 0px 950px;
+                border-style: solid;
+                border-color: transparent transparent transparent #676767;
+            }
+            h2 {
+                color: white;
+                font-size: 54px;
+                padding: 100px 0px 0px 500px;
+            }
+            h3 {
+                color: white;
+                font-size: 48px;
+                padding: 20px 0px 0px 500px;
+            }
+            .foodpandabut {
+                width: 220px;
+                height: 50px;
+                background: #faf286;
+                outline: none;
+                border: none;
+                border-radius: 30px;
+                margin: 50px 0px 0px 520px;
+                position: relative;
+                cursor: pointer;
+                font-size: 20px;
+                letter-spacing: 3px;
+                overflow: hidden;
+                .light {
+                    width: 80px;
+                    height: 120px;
+                    background: linear-gradient(to right,transparent,rgba(255,255,255,.5),transparent);
+                    position: absolute;
+                    top: -40px;
+                    left: -90px;
+                    transform: rotate(30deg);
+                    transition: 0.3s all;
+                }
+            }
+            //閃光動畫
+            .flash .light {
+                left: 250px;
+            }
+            .foodpandabg {
+                width: 410px;
+                height: 450px;
+                background: url('../images/img_5.png');
+                position: absolute;
+                bottom: 45px;
+                left: 65px;
+                opacity: 0;
+                transition: 0.1s all;
+                transition-delay: 0.5s;
+            }
+        }
+        //車子動畫
+        .run .foodpandabg {
+            opacity: 1;
+            animation: delivery2 0.8s ease-out;
+        }
+        .run2 .foodpandabg {
+            opacity: 0;
+            animation: delivery2_2 1s ease-out;
+        }
+    }
+    //rwd圖片
+    .rwdimg {
+        display: none;
+        width: 100%;
+        height: 1920px;
+        background: url('../images/banner.png') no-repeat top center;
+        background-size: cover;
+        h1 {
+            display: block;
+            width: 640px;
+            font-family: Arial, Helvetica, sans-serif;
+            position: absolute;
+            font-size: 180px;
+            letter-spacing: 10px;
+            top: 400px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-shadow: 0px 0px 10px gray;
+            z-index: 1;
+        }
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            position: absolute;
+            font-size: 70px;
+            top: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            color: white;
+        }
+    }
+}
+//footer
+footer {
+    width: 100%;
+    height: 450px;
+    text-align: center;
+    h2 {
+        font-size: 46px;
+        padding: 40px 0px;
+    }
+    article {
+        max-width: 1100px;
+        height: 250px;
+        margin: 0px auto;
+        //字區
+        div {
+            width: 50%;
+            height: 250px;
+            float: left;
+            text-align: left;
+            h3 {
+                font-size: 18px;
+                font-weight: bold;
+                padding: 30px 0px 10px;
+            }
+            p {
+                line-height: 22px;
+                font-weight: bolder;
+            }
+            span {
+                display: block;
+                padding-top: 20px;
+                font-weight: bold;
+            }
+        }
+        //地圖
+        iframe {
+            width: 500px;
+            height: 200px;
+            margin-top: 30px;
+        }
+    }
+}
+//動畫區
+@keyframes slide1 {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    50% {
+        transform: rotate(-10deg)  scaleX(0.9);
+    }
+}
+@keyframes slide2 {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+@keyframes slide3 {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    80% {
+        opacity: 0;
+        transform: translateY(-100%) scaleX(0.5);
+    }
+}
+@keyframes delivery1 {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateX(100%) translateY(70%);
+    }
+    50% {
+        transform: scale(1);
+    }
+    55% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    65% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    75% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    85% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    95% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+}
+@keyframes delivery1_2 {
+    0% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    10% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    20% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    30% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    80% {
+        transform: translateX(-100%) translateY(100%) scale(0.2);
+    }
+}
+@keyframes delivery2 {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateX(-100%) translateY(70%);
+    }
+    50% {
+        transform: scale(1);
+    }
+    55% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    65% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    75% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    85% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    95% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+}
+@keyframes delivery2_2 {
+    0% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    10% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    20% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    30% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    80% {
+        transform: translateX(100%) translateY(100%) scale(0.2);
+    }
+}
+//RWD
+@media only screen and(max-width: 1600px) {
+    main {
+        .list {
+            article {
+                max-width: 1040px;
+                section {
+                    margin-right: 40px;
+                }
+            }
+        }
+        .delivery {
+            .uber {
+                h2 {
+                    top: 50px;
+                    right: 320px;
+                }
+                h3 {
+                    top: 120px;
+                    right: 320px;
+                }
+                .uberbut {
+                    top: 200px;
+                    right: 320px;
+                    z-index: 2;
+                }
+            }
+            .foodpanda {
+                h2 {
+                    padding: 40px 0px 0px 260px;
+                }
+                h3 {
+                    padding: 20px 0px 0px 320px;
+                }
+                .foodpandabut {
+                    margin: 40px 0px 0px 330px;
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}
+@media only screen and(max-width: 1080px) {
+    header {
+        height: 150px;
+        article {
+            height: 100%;
+            &::before {
+                width: 60%;
+                height: 260px;
+                left: 50%;
+                top: 20px;
+                transform: translateX(-50%);
+            }
+            .rwdbut {
+                display: block;
+            }
+            .rwdfb {
+                display: block;
+            }
+            .rwdlist {
+                display: block;
+            }
+            .logo {
+                float: none;
+                width: 100%;
+                height: 260px;
+                margin: 0px auto;
+                background-size: cover;
+                background: url('../images/logobig.png') no-repeat top center;
+                transform: translateY(5%) scale(0.8);
+            }
+            ul {
+                display: none;
+            }
+        }
+    }
+    main {
+        padding-top: 150px;
+        .rwdimg {
+            display: block;
+        }
+        .single-item {
+            display: none;
+        }
+        .list {
+            height: 2960px;
+            .listbg1,.listbg2 {
+                display: none;
+            }
+            article {
+                height: 100%;
+                section {
+                    display: none;
+                }
+                .rwdsec1,.rwdsec2,.rwdsec3 {
+                    display: block;
+                    div {
+                        opacity: 1;
+                        width: 55%;
+                        height: 250px;
+                        transform: translateY(-50%);
+                        p {
+                            font-size: 40px;
+                            line-height: 80px;
+                            padding-top: 30px;
+                        }
+                        h2 {
+                            font-size: 70px;
+                        }
+                    }
+                }
+                .rwdsec3 {
+                    margin-bottom: 100px;
+                }
+                button {
+                    display: none;
+                }
+                .listrwdbut {
+                    display: block;
+                }
+            }
+        }
+        .about {
+            height: 1920px;
+            background-size: cover;
+            .text {
+                width: 100%;
+                height: 100%;
+                transform: none;
+                &::before {
+                    width: 180px;
+                    border-top-width: 20px;
+                    margin: 200px 0px 0px 100px;
+                }
+                .at1,.at2,.at3,.at4,.at5,.a1,.a2,.a3 {
+                    display: none;
+                }
+                .rat1,.rat2,.rat3,.rat4 {
+                    display: inline-block;
+                }
+                .rat5,.ra1,.ra2,.ra3 {
+                    display: block;
+                }
+                h2 {
+                    font-size: 100px;
+                }
+                .rat1 {
+                    padding: 275px 0px 0px 100px;
+                }
+                h3 {
+                    font-size: 50px;
+                    padding: 20px 0px 100px 100px;
+                }
+                p {
+                    font-size: 50px;
+                    padding: 0px 100px;
+                    line-height: 70px;
+                    font-weight: normal;
+                    padding-bottom: 20px;
+                }
+            }
+        }
+        .menu {
+            display: none;
+        }
+        .rwdmenu {
+            display: block;
+        }
+        .delivery {
+            height: 1350px;
+            .uber,.foodpanda {
+                width: 100%;
+                height: 675px;
+                float: none;
+                h2 {
+                    font-size: 90px;
+                }
+                h3 {
+                    font-size: 80px;
+                }
+                .uberbut,.foodpandabut {
+                    width: 400px;
+                    height: 100px;
+                    border-radius: 100px;
+                    font-size: 50px;
+                }
+                .flash .light {
+                    left: 500px;
+                }
+            }
+            .uber {
+                h2 {
+                    top: 100px;
+                    right: 530px;
+                }
+                h3 {
+                    top: 210px;
+                    right: 750px;
+                }
+                .uberbut {
+                    top: 340px;
+                    right: 530px;
+                }
+            }
+            .foodpanda {
+                h2 {
+                    padding: 100px 0px 0px 500px;
+                }
+                h3 {
+                    padding: 20px 0px 0px 500px;
+                }
+                .foodpandabut {
+                    margin: 50px 0px 0px 520px;
+                }
+            }
+        }
+    }
+    footer {
+        height: 1350px;
+        h2 {
+            display: none;
+        }
+        article {
+            div {
+                width: 100%;
+                float: none;
+                text-align: center;
+                margin: 0px auto;
+                h3 {
+                    padding-top: 50px;
+                    font-size: 56px;
+                }
+                p {
+                    font-size: 48px;
+                    font-weight: normal;
+                    line-height: 56px;
+                }
+                span {
+                    padding-top: 100px;
+                    font-size: 36px;
+                }
+                .rwdfoot1 {
+                    margin-top: 750px;
+                }
+            }
+            iframe {
+                width: 100%;
+                height: 700px;
+            }
+        }
+    }
+}
